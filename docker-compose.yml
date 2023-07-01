@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  web:
+    container_name: sponsvisa-frontend
+    build:
+      context: ./
+      target: runner
+    ports:
+      - "3000:3000"
