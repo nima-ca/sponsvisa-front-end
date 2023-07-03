@@ -2,8 +2,8 @@ import Provider from "@src/components/providers/provider";
 import "@styles/globals.scss";
 
 export const metadata = {
-  title: "Sponsvisa",
-  description: "A platform to share the companies that supports relocation!",
+  title: `Sponsvisa`,
+  description: `A platform to share the companies that supports relocation!`,
 };
 
 export default function RootLayout({
