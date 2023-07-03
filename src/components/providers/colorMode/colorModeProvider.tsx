@@ -8,8 +8,8 @@ const ColorModeProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ThemeProvider
       attribute="class"
-      themes={[colorModes.LIGHT, colorModes.DARK]}
-      defaultTheme={colorModes.LIGHT}
+      themes={[colorModes.LIGHT, colorModes.DARK, colorModes.SYSTEM]}
+      defaultTheme={colorModes.SYSTEM}
       enableSystem
     >
       {children}

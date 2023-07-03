@@ -1,12 +1,15 @@
 import { FC, PropsWithChildren } from "react";
-import MuiWrapper from "../mui/muiProvider";
-import ColorModeProvider from "../colorMode/colorModeProvider";
+import MuiWrapper from "./mui/muiProvider";
+import ColorModeProvider from "./colorMode/colorModeProvider";
+import ReactQueryProvider from "./reactQuery/reactQueryProvider";
 
 const Provider: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <ColorModeProvider>
-      <MuiWrapper>{children}</MuiWrapper>
-    </ColorModeProvider>
+    <ReactQueryProvider>
+      <ColorModeProvider>
+        <MuiWrapper>{children}</MuiWrapper>
+      </ColorModeProvider>
+    </ReactQueryProvider>
   );
 };
 
