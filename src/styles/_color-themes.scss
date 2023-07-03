@@ -1,0 +1,47 @@
+$primary50: #eceffb;
+$primary100: #d8e0f7;
+$primary200: #b1c1ee;
+$primary300: #8ba1e6;
+$primary400: #6482dd;
+$primary500: #3d63d5;
+$primary600: #314faa;
+$primary700: #253b80;
+$primary800: #182855;
+$primary900: #0c142b;
+
+$secondary50: #e6f8e9;
+$secondary100: #b3e9bc;
+$secondary200: #80da8f;
+$secondary300: #4dcb62;
+$secondary400: #1abc35;
+$secondary500: #01b51e;
+$secondary600: #019118;
+$secondary700: #016d12;
+$secondary800: #00480c;
+$secondary900: #002406;
+
+$grey50: #edecee;
+$grey100: #dad9dd;
+$grey200: #b5b3bb;
+$grey300: #908c99;
+$grey400: #6b6677;
+$grey500: #464055;
+$grey600: #383344;
+$grey700: #2a2633;
+$grey800: #23202b;
+$grey900: #1c1a22;
+
+$white: #fff;
+$black: #000;
+
+html.light {
+  --color-bg: #{$white};
+  --color-text: #{$grey900};
+  --color-border: #{$grey900};
+}
+
+html.dark {
+  --color-bg: #{$primary900};
+  --color-text: #{$grey50};
+  --color-border: #{$grey50};
+}

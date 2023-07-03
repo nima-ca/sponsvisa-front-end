@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "quotes": ["error", "backtick"],
+    "no-console": "warn", // disallow the use of console
+    "no-debugger": "warn", // disallow the use of debugger
+    "no-alert": "warn", // disallow the use of alert
+
+    // Best Practices
+    "no-unused-vars": "warn", // disallow unused variables
+    "no-empty": ["warn", { "allowEmptyCatch": true }], // disallow empty block statements except for catch blocks
+    "no-use-before-define": ["error", { "functions": false, "classes": true }], // disallow the use of variables before they are defined
+
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+  }
 }
