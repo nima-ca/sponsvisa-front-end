@@ -1,5 +1,13 @@
-import { ReactNode } from "react";
+import { ButtonProps as MUIButtonProps } from "@mui/material";
 
-export interface ButtonProps {
-  chidren: ReactNode;
-}
+export type ButtonProps = Pick<
+  MUIButtonProps,
+  | `startIcon`
+  | `endIcon`
+  | `fullWidth`
+  | `disabled`
+  | `onClick`
+  | `variant`
+  | `size`
+  | `className`
+>;

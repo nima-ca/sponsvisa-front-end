@@ -1,0 +1,24 @@
+.button {
+  color: var(--color-text);
+}
+
+.button__text {
+  color: var(--color-text);
+}
+
+.button__outlined {
+  border-color: var(--color-border);
+
+  &:hover {
+    border-color: var(--color-border);
+    opacity: 0.9;
+  }
+}
+
+.button__contained {
+  color: var(--color-white-black);
+  background-color: var(--color-black-white);
+  &:hover {
+    background-color: var(--color-black-white);
+  }
+}
