@@ -20,6 +20,8 @@ export const buttonVariants = cva(`${styles.button}`, {
   },
 });
 
+export const BUTTON_TEST_ID = `button`;
+
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   className,
@@ -28,8 +30,10 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
 }) => {
   return (
     <MUIButton
+      data-testid={BUTTON_TEST_ID}
       className={buttonVariants({ className, variant })}
       variant={variant}
+      classes={{ disabled: styles[`disabled__${variant}`] }}
       {...props}
     >
       {children}
