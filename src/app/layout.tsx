@@ -1,7 +1,8 @@
 import Provider from "@src/components/providers/provider";
 import "@styles/globals.scss";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: `Sponsvisa`,
   description: `A platform to share the companies that supports relocation!`,
 };
