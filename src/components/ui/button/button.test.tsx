@@ -7,10 +7,9 @@ describe(`Button`, () => {
   const TEXT_CLASS_NAME = `button__text`;
   const CONTAINED_CLASS_NAME = `button__contained`;
   const OUTLINED_CLASS_NAME = `button__outlined`;
+  const TEXT = `submit`;
 
   it(`should render children as label of the button`, () => {
-    const TEXT = `submit`;
-
     render(<Button>{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
@@ -19,7 +18,7 @@ describe(`Button`, () => {
   });
 
   it(`should render a text button as default`, () => {
-    render(<Button>test</Button>);
+    render(<Button>{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(TEXT_CLASS_NAME);
@@ -29,7 +28,7 @@ describe(`Button`, () => {
   });
 
   it(`should render an outlined button`, () => {
-    render(<Button variant="outlined">test</Button>);
+    render(<Button variant="outlined">{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(OUTLINED_CLASS_NAME);
@@ -39,7 +38,7 @@ describe(`Button`, () => {
   });
 
   it(`should render a contained button`, () => {
-    render(<Button variant="contained">test</Button>);
+    render(<Button variant="contained">{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(CONTAINED_CLASS_NAME);
@@ -88,7 +87,7 @@ describe(`Button`, () => {
   });
 
   it(`should render a full width button`, () => {
-    render(<Button fullWidth>test</Button>);
+    render(<Button fullWidth>{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(`MuiButton-fullWidth`);
@@ -97,7 +96,7 @@ describe(`Button`, () => {
 
   it(`should check if the onClick callback is called`, () => {
     const onClickCallback = vi.fn();
-    render(<Button onClick={onClickCallback}>test</Button>);
+    render(<Button onClick={onClickCallback}>{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     fireEvent.click(button);
@@ -107,7 +106,7 @@ describe(`Button`, () => {
   });
 
   it(`should check if there is a start Icon on the button`, () => {
-    const { container } = render(<Button startIcon={<></>}>test</Button>);
+    const { container } = render(<Button startIcon={<></>}>{TEXT}</Button>);
     const icon = container.getElementsByClassName(`MuiButton-startIcon`);
 
     expect(icon.length).toBeGreaterThan(0);
@@ -115,7 +114,7 @@ describe(`Button`, () => {
   });
 
   it(`should check if there is a end Icon on the button`, () => {
-    const { container } = render(<Button endIcon={<></>}>test</Button>);
+    const { container } = render(<Button endIcon={<></>}>{TEXT}</Button>);
     const icon = container.getElementsByClassName(`MuiButton-endIcon`);
 
     expect(icon.length).toBeGreaterThan(0);
@@ -124,7 +123,7 @@ describe(`Button`, () => {
 
   it(`should check if the className provided is set on the button`, () => {
     const CLASS_NAME = `testClassName`;
-    render(<Button className={CLASS_NAME}>test</Button>);
+    render(<Button className={CLASS_NAME}>{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(CLASS_NAME);
@@ -132,7 +131,7 @@ describe(`Button`, () => {
   });
 
   it(`should check if the size of button is small`, () => {
-    render(<Button size="small">test</Button>);
+    render(<Button size="small">{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(`MuiButton-sizeSmall`);
@@ -142,7 +141,7 @@ describe(`Button`, () => {
   });
 
   it(`should check if the size of button is medium`, () => {
-    render(<Button size="medium">test</Button>);
+    render(<Button size="medium">{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(`MuiButton-sizeMedium`);
@@ -152,12 +151,23 @@ describe(`Button`, () => {
   });
 
   it(`should check if the size of button is large`, () => {
-    render(<Button size="large">test</Button>);
+    render(<Button size="large">{TEXT}</Button>);
     const button = screen.getByTestId(BUTTON_TEST_ID);
 
     expect(button.className).toContain(`MuiButton-sizeLarge`);
     expect(button.className).not.toContain(`MuiButton-sizeMedium`);
     expect(button.className).not.toContain(`MuiButton-sizeSmall`);
+    expect.hasAssertions();
+  });
+
+  it(`should render a disabled button with end icon of an spinner if it is Loading`, () => {
+    const { container } = render(<Button isLoading>{TEXT}</Button>);
+    const button = screen.getByTestId(BUTTON_TEST_ID);
+
+    const icon = container.getElementsByClassName(`MuiButton-endIcon`);
+    expect(button.className).toContain(`Mui-disabled`);
+    expect(icon.length).toBeGreaterThan(0);
+
     expect.hasAssertions();
   });
 });

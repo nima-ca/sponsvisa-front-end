@@ -6,6 +6,7 @@ import { ButtonProps } from "./button.types";
 import styles from "./button.module.scss";
 
 import { cva } from "class-variance-authority";
+import { SpinnerIcon } from "@src/components/icons/spinner";
 
 export const buttonVariants = cva(`${styles.button}`, {
   variants: {
@@ -25,7 +26,10 @@ export const BUTTON_TEST_ID = `button`;
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   className,
+  isLoading,
+  disabled,
   variant,
+  endIcon,
   ...props
 }) => {
   return (
@@ -33,7 +37,9 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       data-testid={BUTTON_TEST_ID}
       className={buttonVariants({ className, variant })}
       variant={variant}
-      classes={{ disabled: styles[`disabled__${variant}`] }}
+      classes={{ disabled: styles[`disabled__${variant ?? `text`}`] }}
+      disabled={disabled || isLoading}
+      endIcon={isLoading ? <SpinnerIcon /> : endIcon}
       {...props}
     >
       {children}
