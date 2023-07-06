@@ -9,6 +9,7 @@ const nextConfig = {
     @import "color-themes";
     @import "mixins";
     @import "breakpoints";
+    @import "typography";
     `,
   },
 };
