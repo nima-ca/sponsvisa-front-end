@@ -15,6 +15,7 @@ html {
 body {
   font-size: 1.6rem;
   font-weight: 500;
+  position: relative;
 }
 
 html,
@@ -39,10 +40,6 @@ ul {
   margin: 0 auto;
   padding: 0 1rem;
 
-  @include sm {
-    max-width: $smMQ;
-  }
-
   @include md {
     max-width: $mdMQ;
   }
@@ -54,4 +51,10 @@ ul {
   @include xl {
     max-width: $lgMQ;
   }
+}
+
+// remove tap effect on mobile devices
+* {
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
 }
