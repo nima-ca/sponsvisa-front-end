@@ -1,14 +1,13 @@
 import { FC } from "react";
 import styles from "./hamburgerButton.module.scss";
+import { HamburgerButtonProps } from "./hamburgerButton.types";
 
-interface HamburgerButtonProps {
-  isOpen?: boolean;
-  onClick?: () => void;
-}
+export const HAMBURGER_BUTTON_TEST_ID = `hamburgerButton`;
 
 const HamburgerButton: FC<HamburgerButtonProps> = ({ isOpen, onClick }) => {
   return (
     <button
+      data-testid={HAMBURGER_BUTTON_TEST_ID}
       onClick={onClick}
       className={`${styles.menu} ${isOpen ? styles.opened : ``}`}
       aria-label="Main Menu"
