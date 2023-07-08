@@ -1,0 +1,50 @@
+.mobile {
+  display: flex;
+
+  @include md {
+    display: none;
+  }
+
+  &__menu {
+    width: 28rem;
+    position: absolute;
+    height: calc(100vh - 8rem);
+    background-color: var(--color-bg);
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-border) 50%, transparent);
+    border-left: 1px solid
+      color-mix(in srgb, var(--color-border) 50%, transparent);
+    top: 100%;
+    right: -100%;
+
+    transition: all 0.5s;
+
+    &--open {
+      right: 0;
+    }
+  }
+}
+
+.navigation {
+  width: 100%;
+  @include center;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__link {
+    @include center;
+    width: 100%;
+    height: 100%;
+    height: 4.5rem;
+    transition: all 0.15s;
+    &:active {
+      background-color: $slate400;
+      opacity: 0.7;
+    }
+  }
+}
