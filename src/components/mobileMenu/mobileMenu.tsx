@@ -1,20 +1,22 @@
 "use client";
 
-import { FC, useState } from "react";
-import HamburgerButton from "../ui/hamburgerButton/hamburgerButton";
-import styles from "./mobileMenu.module.scss";
-import { navbarLinks } from "../navbar/navbar.data";
+import { navbarLinks } from "@src/components/navbar/navbar.data";
+import HamburgerButton from "@src/components/ui/hamburgerButton/hamburgerButton";
+import { useToggle } from "@src/hooks/useToggle/useToggle";
 import Link from "next/link";
+import { FC } from "react";
+import styles from "./mobileMenu.module.scss";
+
+export const MOBILE_MENU_TEST_ID = `mobileMenuTestId`;
+export const MOBILE_MENU_ASIDE_TEST_ID = `mobileMenuAsideTestId`;
 
 const MobileMenu: FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { state: isMenuOpen, toggle: toggleMenu } = useToggle(false);
   return (
-    <div className={styles.mobile}>
-      <HamburgerButton
-        isOpen={isMenuOpen}
-        onClick={() => setIsMenuOpen((prev) => !prev)}
-      />
-      <div
+    <div className={styles.mobile} data-testid={MOBILE_MENU_TEST_ID}>
+      <HamburgerButton isOpen={isMenuOpen} onClick={toggleMenu} />
+      <aside
+        data-testid={MOBILE_MENU_ASIDE_TEST_ID}
         className={`${styles.mobile__menu} ${
           isMenuOpen ? styles[`mobile__menu--open`] : ``
         }`}
@@ -31,7 +33,7 @@ const MobileMenu: FC = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </aside>
     </div>
   );
 };
