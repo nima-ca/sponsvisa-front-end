@@ -1,0 +1,7 @@
+.mobile {
+  display: flex;
+
+  @include md {
+    display: none;
+  }
+}
