@@ -8,23 +8,13 @@ interface PWAMetaTagsProps {
 const PWAMetaTags: FC<PWAMetaTagsProps> = ({ description, title }) => {
   return (
     <>
+      <link rel="manifest" href="/manifest.json" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
         href="/pwa/apple-touch-icon.png"
       />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/pwa/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/pwa/favicon-16x16.png"
-      />
+      <link rel="shortcut icon" href="/favicon.ico" />
       <meta name="theme-color" content="#ffffff" />
       <meta name="application-name" content={title} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,8 +27,6 @@ const PWAMetaTags: FC<PWAMetaTagsProps> = ({ description, title }) => {
       <meta name="msapplication-TileColor" content="#603cba" />
       <meta name="msapplication-tap-highlight" content="no" />
 
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="shortcut icon" href="/favicon.ico" />
       <link
         rel="apple-touch-startup-image"
         media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
