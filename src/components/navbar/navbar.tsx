@@ -10,11 +10,14 @@ const Navbar: FC = () => {
   return (
     <nav className={`${styles.navbar}`}>
       <div className={`${styles.navbar__box} container`}>
-        <Image
-          src={LogoImg}
-          alt="Sponsvisa logo of an airplane"
-          className={styles.logo}
-        />
+        <Link href="/">
+          <Image
+            src={LogoImg}
+            alt="Sponsvisa logo of an airplane"
+            className={styles.logo}
+            priority
+          />
+        </Link>
         <ul className={styles.navigation}>
           {navbarLinks.map((link, index) => (
             <li
