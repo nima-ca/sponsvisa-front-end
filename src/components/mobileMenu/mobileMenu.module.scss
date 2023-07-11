@@ -7,7 +7,7 @@
 
   &__menu {
     width: 28rem;
-    position: absolute;
+    position: fixed;
     height: calc(100vh - 8rem);
     background-color: var(--color-bg);
     border-top: 1px solid
@@ -16,6 +16,7 @@
       color-mix(in srgb, var(--color-border) 50%, transparent);
     top: 100%;
     right: -100%;
+    z-index: 50;
 
     transition: all 0.5s;
 
@@ -47,4 +48,14 @@
       opacity: 0.7;
     }
   }
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  height: calc(100vh - 8rem);
+  top: 100%;
+  z-index: 30;
+  left: 0;
 }

@@ -9,6 +9,7 @@ import styles from "./mobileMenu.module.scss";
 
 export const MOBILE_MENU_TEST_ID = `mobileMenuTestId`;
 export const MOBILE_MENU_ASIDE_TEST_ID = `mobileMenuAsideTestId`;
+export const BACKDROP_TEST_ID = `backdropTestId`;
 
 const MobileMenu: FC = () => {
   const { state: isMenuOpen, toggle: toggleMenu } = useToggle(false);
@@ -34,6 +35,13 @@ const MobileMenu: FC = () => {
           ))}
         </ul>
       </aside>
+      {isMenuOpen && (
+        <div
+          className={styles.backdrop}
+          onClick={toggleMenu}
+          data-testid={BACKDROP_TEST_ID}
+        />
+      )}
     </div>
   );
 };
