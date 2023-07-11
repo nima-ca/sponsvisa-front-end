@@ -34,6 +34,7 @@ const MobileMenu: FC = () => {
           ))}
         </ul>
       </aside>
+      {isMenuOpen && <div className={styles.backdrop} onClick={toggleMenu} />}
     </div>
   );
 };
