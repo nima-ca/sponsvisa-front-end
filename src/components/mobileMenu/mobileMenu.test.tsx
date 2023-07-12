@@ -8,7 +8,7 @@ import MobileMenu, {
 } from "./mobileMenu";
 import { useToggle } from "../../hooks/useToggle/useToggle";
 import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton";
-import { navbarLinks } from "../navbar/navbar.data";
+import { navbarLinks } from "../../utils/navbarLinks";
 
 vi.mock(`../../hooks/useToggle/useToggle`);
 

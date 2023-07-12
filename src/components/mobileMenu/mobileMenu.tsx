@@ -1,11 +1,11 @@
 "use client";
 
-import { navbarLinks } from "@src/components/navbar/navbar.data";
 import HamburgerButton from "@src/components/ui/hamburgerButton/hamburgerButton";
 import { useToggle } from "@src/hooks/useToggle/useToggle";
 import Link from "next/link";
 import { FC } from "react";
 import styles from "./mobileMenu.module.scss";
+import { navbarLinks } from "@src/utils/navbarLinks";
 
 export const MOBILE_MENU_TEST_ID = `mobileMenuTestId`;
 export const MOBILE_MENU_ASIDE_TEST_ID = `mobileMenuAsideTestId`;
