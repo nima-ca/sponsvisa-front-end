@@ -12,6 +12,7 @@ export default function Home() {
           className={styles.main__image}
           src={GirlImage}
           alt="A girl Traveling"
+          priority
         />
         <div className={styles[`content-box`]}>
           <h1 className={styles.header}>Sponsvisa</h1>
