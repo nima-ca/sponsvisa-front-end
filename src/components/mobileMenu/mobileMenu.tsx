@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FC } from "react";
 import styles from "./mobileMenu.module.scss";
 import { navbarLinks } from "@src/utils/navbarLinks";
+import AuthButtons from "@src/components/authButtons/authButtons";
 
 export const MOBILE_MENU_TEST_ID = `mobileMenuTestId`;
 export const MOBILE_MENU_ASIDE_TEST_ID = `mobileMenuAsideTestId`;
@@ -34,6 +35,8 @@ const MobileMenu: FC = () => {
             </li>
           ))}
         </ul>
+
+        <AuthButtons />
       </aside>
       {isMenuOpen && (
         <div
