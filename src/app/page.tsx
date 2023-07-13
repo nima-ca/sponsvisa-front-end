@@ -4,7 +4,7 @@ import GirlImage from "@public/images/Girl-1.svg";
 import Link from "next/link";
 import { ArrowRightIcon } from "@src/components/icons/arrowRight";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className={styles.main}>
       <div className={`container ${styles.main__container}`}>
@@ -12,6 +12,9 @@ export default function Home() {
           className={styles.main__image}
           src={GirlImage}
           alt="A girl Traveling"
+          // width and height are added for testing purposes
+          width={0}
+          height={0}
           priority
         />
         <div className={styles[`content-box`]}>
