@@ -20,7 +20,7 @@ const AuthButtons: FC = () => {
       <Button
         variant="contained"
         size="medium"
-        onClick={() => router.push(`/register`)}
+        onClick={() => router.push(`/login`)}
       >
         Login
       </Button>

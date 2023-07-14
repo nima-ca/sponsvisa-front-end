@@ -10,6 +10,12 @@ import { useToggle } from "../../hooks/useToggle/useToggle";
 import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton";
 import { navbarLinks } from "../../utils/navbarLinks";
 
+import "next/navigation";
+
+vi.mock(`next/navigation`, () => ({
+  useRouter: vi.fn(),
+}));
+
 vi.mock(`../../hooks/useToggle/useToggle`);
 
 describe(`Mobile Navbar`, () => {
