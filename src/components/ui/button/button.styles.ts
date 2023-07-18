@@ -1,6 +1,6 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
 
-const outline = defineStyle({
+export const outline = defineStyle({
   fontWeight: 500,
   borderColor: `var(--color-text)`,
   color: `var(--color-text)`,
@@ -19,7 +19,7 @@ const outline = defineStyle({
   },
 });
 
-const solid = defineStyle({
+export const solid = defineStyle({
   fontWeight: 500,
   backgroundColor: `var(--color-black-white)`,
   color: `var(--color-white-black)`,
