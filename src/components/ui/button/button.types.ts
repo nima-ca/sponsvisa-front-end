@@ -1,17 +1,5 @@
-import { ButtonProps as MUIButtonProps } from "@mui/material";
+import { ButtonProps as ChakraButtonProps } from "@chakra-ui/react";
 
-export interface ButtonProps
-  extends Pick<
-    MUIButtonProps,
-    | `startIcon`
-    | `endIcon`
-    | `fullWidth`
-    | `disabled`
-    | `onClick`
-    | `variant`
-    | `size`
-    | `className`
-    | `type`
-  > {
+export interface ButtonProps extends ChakraButtonProps {
   isLoading?: boolean;
 }

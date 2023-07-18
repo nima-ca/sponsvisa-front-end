@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 8rem;
+  height: 5rem;
   background-color: var(--color-bg);
   border-bottom: 0.5px solid
     color-mix(in srgb, var(--color-border) 50%, transparent);
@@ -20,8 +20,8 @@
   }
 
   .logo {
-    width: 5rem;
-    height: 5rem;
+    width: 3.125rem;
+    height: 3.125rem;
   }
 }
 
@@ -31,7 +31,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
   display: none;
 
   &__link {

@@ -1,13 +1,13 @@
 import { FC, PropsWithChildren } from "react";
-import MuiWrapper from "./mui/muiProvider";
 import ColorModeProvider from "./colorMode/colorModeProvider";
 import ReactQueryProvider from "./reactQuery/reactQueryProvider";
+import ChakraUIProvider from "./chakra/chakraUiProvider";
 
 const Provider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ReactQueryProvider>
       <ColorModeProvider>
-        <MuiWrapper>{children}</MuiWrapper>
+        <ChakraUIProvider>{children}</ChakraUIProvider>
       </ColorModeProvider>
     </ReactQueryProvider>
   );

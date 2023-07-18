@@ -6,9 +6,9 @@
   }
 
   &__menu {
-    width: 28rem;
+    width: 17.5rem;
     position: fixed;
-    height: calc(100vh - 8rem);
+    height: calc(100vh - 5rem);
     background-color: var(--color-bg);
     border-top: 1px solid
       color-mix(in srgb, var(--color-border) 50%, transparent);
@@ -30,7 +30,7 @@
   width: 100%;
   @include center;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3125rem;
 
   &__container {
     width: 100%;
@@ -41,7 +41,7 @@
     @include center;
     width: 100%;
     height: 100%;
-    height: 4.5rem;
+    height: 2.81rem;
     transition: all 0.15s;
     &:active {
       background-color: $slate400;
@@ -54,7 +54,7 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  height: calc(100vh - 8rem);
+  height: calc(100vh - 5rem);
   top: 100%;
   z-index: 30;
   left: 0;
