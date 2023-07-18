@@ -9,7 +9,7 @@ const ColorModeProvider: FC<PropsWithChildren> = ({ children }) => {
     <ThemeProvider
       attribute="class"
       themes={[colorModes.LIGHT, colorModes.DARK, colorModes.SYSTEM]}
-      defaultTheme={colorModes.LIGHT}
+      defaultTheme={colorModes.SYSTEM}
       enableSystem
     >
       {children}

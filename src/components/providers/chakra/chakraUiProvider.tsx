@@ -5,9 +5,14 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { FC, PropsWithChildren } from "react";
 
 import { extendTheme } from "@chakra-ui/react";
-import { buttonTheme } from "@src/components/ui/button/button";
+import { vazirmatn } from "@src/styles/fonts/vazirmatn/vazirmatn";
+import { buttonTheme } from "@src/components/ui/button/button.styles";
 
 export const theme = extendTheme({
+  fonts: {
+    body: vazirmatn.style.fontFamily,
+    heading: vazirmatn.style.fontFamily,
+  },
   components: { Button: buttonTheme },
 });
 

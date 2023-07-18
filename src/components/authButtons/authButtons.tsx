@@ -14,12 +14,12 @@ const AuthButtons: FC = () => {
     <div className={styles[`auth-button`]}>
       <Button
         variant="solid"
-        size="md"
+        size="sm"
         onClick={() => router.push(`/register`)}
       >
         Register
       </Button>
-      <Button variant="solid" size="md" onClick={() => router.push(`/login`)}>
+      <Button variant="solid" size="sm" onClick={() => router.push(`/login`)}>
         Login
       </Button>
     </div>
