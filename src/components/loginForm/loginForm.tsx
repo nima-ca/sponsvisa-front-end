@@ -26,8 +26,9 @@ const LoginForm: FC = () => {
   const formik = useFormik<LoginFormikProps>({
     initialValues: { email: ``, password: `` },
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
-    onSubmit(values) {
+    onSubmit(values, { resetForm }) {
       loginMutation.mutate(values);
+      resetForm();
     },
   });
 
@@ -48,7 +49,13 @@ const LoginForm: FC = () => {
         {...formik.getFieldProps(`password`)}
         isInvalid={!!formik.errors.password && !!formik.touched.password}
       />
-      <Button className={styles.submit} type="submit" variant="solid" size="md">
+      <Button
+        className={styles.submit}
+        isLoading={loginMutation.isLoading}
+        type="submit"
+        variant="solid"
+        size="md"
+      >
         Login
       </Button>
 

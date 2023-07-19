@@ -14,14 +14,9 @@ const PasswordInput: FC<Omit<InputProps, `type`>> = (props) => {
   const { state: show, toggle: toggleShow } = useToggle(false);
   return (
     <InputGroup size="md">
-      <Input {...props} type={show ? `text` : `password`} pr="4.5rem" />
-      <InputRightElement width="4.5rem">
-        <Button
-          className={styles.toggle}
-          onClick={toggleShow}
-          size="sm"
-          variant="link"
-        >
+      <Input {...props} type={show ? `text` : `password`} pr="3.5rem" />
+      <InputRightElement width="3.5rem">
+        <Button onClick={toggleShow} size="sm" variant="link">
           {show ? (
             <ClosedEyeIcon className={styles.icon} />
           ) : (
