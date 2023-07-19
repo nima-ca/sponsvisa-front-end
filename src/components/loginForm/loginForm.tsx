@@ -1,33 +1,39 @@
 "use client";
 
-import { useFormik } from "formik";
-import { FC, FormEvent } from "react";
-import { LoginFormikProps } from "./loginForm.types";
-import Input from "@src/components/ui/input/input";
-import styles from "./loginForm.module.scss";
 import Button from "@src/components/ui/button/button";
-import { useMutation } from "@tanstack/react-query";
-import { login } from "@src/utils/api/auth/login";
-import Link from "next/link";
-import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
+import Input from "@src/components/ui/input/input";
 import PasswordInput from "@src/components/ui/passwrodInput/passwrodInput";
-
+import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FC, FormEvent, useState } from "react";
+import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
+import styles from "./loginForm.module.scss";
+import { LoginFormikProps } from "./loginForm.types";
 const LoginForm: FC = () => {
-  const loginMutation = useMutation({
-    mutationFn: login,
-    onSuccess(res) {
-      console.log(res);
-    },
-    onError(err) {
-      console.log(err);
-    },
-  });
+  const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik<LoginFormikProps>({
     initialValues: { email: ``, password: `` },
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
-    onSubmit(values, { resetForm }) {
-      loginMutation.mutate(values);
+    async onSubmit(values, { resetForm }) {
+      setIsLoading(false);
+      const res = await signIn(`credentials`, {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+      });
+
+      if (res?.ok) {
+        router.push(`/`);
+      } else {
+        console.log(res?.error);
+      }
+
+      setIsLoading(false);
       resetForm();
     },
   });
@@ -51,7 +57,7 @@ const LoginForm: FC = () => {
       />
       <Button
         className={styles.submit}
-        isLoading={loginMutation.isLoading}
+        isLoading={isLoading}
         type="submit"
         variant="solid"
         size="md"

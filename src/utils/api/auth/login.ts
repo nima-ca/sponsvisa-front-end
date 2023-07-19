@@ -1,11 +1,13 @@
 import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
 import api from "@src/utils/axios";
+import { User } from "next-auth";
 
 export interface LoginResponse {
   success: boolean;
   token?: string;
   refreshToken?: string;
   error?: string[];
+  user: User;
 }
 
 export const login = async (
