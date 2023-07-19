@@ -10,7 +10,6 @@ const Input: FC<InputProps> = ({ isInvalid, className, ...props }) => {
       variant="outline"
       isInvalid={isInvalid}
       errorBorderColor="red.600"
-      focusBorderColor="orange.500"
       className={`${styles.input} ${className}`}
       {...props}
     />
