@@ -2,11 +2,9 @@
 
 import React from "react";
 import { FC } from "react";
-// import Button from "@src/components/ui/button/button";
-
 import styles from "./authButtons.module.scss";
 import { useRouter } from "next/navigation";
-import { Button } from "@chakra-ui/react";
+import Button from "@src/components/ui/button/button";
 
 const AuthButtons: FC = () => {
   const router = useRouter();

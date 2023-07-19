@@ -1,6 +1,7 @@
+"use client";
+
 import { FC } from "react";
 import styles from "./page.module.scss";
-
 const LoginPage: FC = () => {
   return (
     <main className={styles.container}>
