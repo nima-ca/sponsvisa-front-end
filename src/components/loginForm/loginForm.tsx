@@ -9,6 +9,8 @@ import Button from "@src/components/ui/button/button";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "@src/utils/api/auth/login";
 import Link from "next/link";
+import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
+import PasswordInput from "@src/components/ui/passwrodInput/passwrodInput";
 
 const LoginForm: FC = () => {
   const loginMutation = useMutation({
@@ -23,6 +25,7 @@ const LoginForm: FC = () => {
 
   const formik = useFormik<LoginFormikProps>({
     initialValues: { email: ``, password: `` },
+    validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
     onSubmit(values) {
       loginMutation.mutate(values);
     },
@@ -35,8 +38,16 @@ const LoginForm: FC = () => {
 
   return (
     <form className={styles.container} onSubmit={loginSubmitHandler}>
-      <Input placeholder="Email" {...formik.getFieldProps(`email`)} />
-      <Input placeholder="Password" {...formik.getFieldProps(`password`)} />
+      <Input
+        placeholder="Email"
+        {...formik.getFieldProps(`email`)}
+        isInvalid={!!formik.errors.email && !!formik.touched.email}
+      />
+      <PasswordInput
+        placeholder="Password"
+        {...formik.getFieldProps(`password`)}
+        isInvalid={!!formik.errors.password && !!formik.touched.password}
+      />
       <Button className={styles.submit} type="submit" variant="solid" size="md">
         Login
       </Button>
