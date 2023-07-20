@@ -33,6 +33,7 @@
     "vitest.config.ts",
     "cypress.config.ts",
     "cypress/**.*",
-    "test/**.**"
+    "test/**.**",
+    "src/utils/vitestMocks.ts"
   ]
 }

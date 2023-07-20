@@ -3,7 +3,7 @@ import { act, renderHook } from "@testing-library/react";
 import { SignInResponse, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { vi } from "vitest";
-import { useRouterMock } from "../../utils/mocks";
+import { useRouterMock } from "../../utils/vitestMocks";
 import useAuth from "./useAuth";
 import {
   LOGIN_FAILED_TITLE_MSG,

@@ -12,7 +12,7 @@ import { navbarLinks } from "../../utils/navbarLinks";
 import "next/navigation";
 import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton.constants";
 import { useSession } from "next-auth/react";
-import { mockUseSession } from "../../utils/mocks";
+import { mockUseSession } from "../../utils/vitestMocks";
 
 vi.mock(`next/navigation`, () => ({
   useRouter: vi.fn(),
