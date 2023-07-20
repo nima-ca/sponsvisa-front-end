@@ -1,14 +1,13 @@
 "use client";
 
 import { IconButton, InputGroup, InputRightElement } from "@chakra-ui/react";
-import Input from "@src/components/ui/input/input";
-import { FC } from "react";
-import { InputProps } from "../input/input.types";
-import Button from "@src/components/ui/button/button";
-import { useToggle } from "@src/hooks/useToggle/useToggle";
 import { ClosedEyeIcon } from "@src/components/icons/closedEye";
 import { OpenEyeIcon } from "@src/components/icons/openEye";
-import styles from "./passwrodInput.module.scss";
+import Input from "@src/components/ui/input/input";
+import { useToggle } from "@src/hooks/useToggle/useToggle";
+import { FC } from "react";
+import { InputProps } from "../input/input.types";
+import styles from "./passwordInput.module.scss";
 
 const PasswordInput: FC<Omit<InputProps, `type`>> = (props) => {
   const { state: show, toggle: toggleShow } = useToggle(false);

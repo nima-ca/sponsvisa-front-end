@@ -2,14 +2,15 @@
 
 import Button from "@src/components/ui/button/button";
 import Input from "@src/components/ui/input/input";
-import PasswordInput from "@src/components/ui/passwrodInput/passwrodInput";
+import PasswordInput from "@src/components/ui/passwordInput/passwordInput";
+import useAuth from "@src/hooks/useAuth/useAuth";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FC, FormEvent, useState } from "react";
+import HelperText from "../ui/helperText/helperText";
 import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
 import { LoginFormikProps } from "./loginForm.types";
-import useAuth from "@src/hooks/useAuth/useAuth";
 
 const LoginForm: FC = () => {
   const { login } = useAuth();
@@ -31,18 +32,26 @@ const LoginForm: FC = () => {
     formik.handleSubmit();
   };
 
+  const emailHasError = !!formik.errors.email && !!formik.touched.email;
+  const passwordHasError =
+    !!formik.errors.password && !!formik.touched.password;
+
   return (
     <form className={styles.container} onSubmit={loginSubmitHandler}>
       <Input
         placeholder="Email"
         {...formik.getFieldProps(`email`)}
-        isInvalid={!!formik.errors.email && !!formik.touched.email}
+        isInvalid={emailHasError}
       />
+      {emailHasError && <HelperText error>{formik.errors.email}</HelperText>}
       <PasswordInput
         placeholder="Password"
         {...formik.getFieldProps(`password`)}
-        isInvalid={!!formik.errors.password && !!formik.touched.password}
+        isInvalid={passwordHasError}
       />
+      {passwordHasError && (
+        <HelperText error>{formik.errors.password}</HelperText>
+      )}
       <Button
         className={styles.submit}
         isLoading={isLoading}
