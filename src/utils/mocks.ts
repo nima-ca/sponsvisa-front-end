@@ -53,3 +53,6 @@ export const mockUseSession = (
     }
   );
 };
+
+export const stringGenerator = (length: number, character: string): string =>
+  new Array(length + 1).join(character);
