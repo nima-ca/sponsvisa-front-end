@@ -6,7 +6,7 @@ import "@styles/globals.scss";
 import { Metadata } from "next";
 
 const TITLE = `Sponsvisa`;
-const DESCRIPTION = `A platform to share the companies that supports relocation!`;
+export const DESCRIPTION = `A platform to share the companies that supports relocation!`;
 
 export const metadata: Metadata = {
   title: TITLE,

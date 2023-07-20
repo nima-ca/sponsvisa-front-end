@@ -10,7 +10,8 @@
     "quotes": ["error", "backtick"],
     "no-console": "warn", // disallow the use of console
     "no-debugger": "warn", // disallow the use of debugger
-    "no-alert": "warn", // disallow the use of alert
+    "no-alert": "off", // disallow the use of alert
+    "@typescript-eslint/no-empty-interface": "off", // allow empty interfaces
 
     // Best Practices
     "no-unused-vars": "warn", // disallow unused variables

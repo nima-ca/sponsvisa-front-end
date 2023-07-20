@@ -2,9 +2,10 @@ import LogoImg from "@public/images/sponsvisa-logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import MobileMenu from "../mobileMenu/mobileMenu";
+import MobileMenu from "@src/components/mobileMenu/mobileMenu";
 import styles from "./navbar.module.scss";
 import { navbarLinks } from "@src/utils/navbarLinks";
+import AuthButtons from "@src/components/authButtons/authButtons";
 
 const Navbar: FC = () => {
   return (
@@ -29,6 +30,8 @@ const Navbar: FC = () => {
               </Link>
             </li>
           ))}
+          |
+          <AuthButtons />
         </ul>
         <MobileMenu />
       </div>

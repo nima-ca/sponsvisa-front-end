@@ -7,9 +7,18 @@ import MobileMenu, {
   MOBILE_MENU_TEST_ID,
 } from "./mobileMenu";
 import { useToggle } from "../../hooks/useToggle/useToggle";
-import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton";
 import { navbarLinks } from "../../utils/navbarLinks";
 
+import "next/navigation";
+import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton.constants";
+import { useSession } from "next-auth/react";
+import { mockUseSession } from "../../utils/mocks";
+
+vi.mock(`next/navigation`, () => ({
+  useRouter: vi.fn(),
+}));
+
+vi.mock(`next-auth/react`);
 vi.mock(`../../hooks/useToggle/useToggle`);
 
 describe(`Mobile Navbar`, () => {
@@ -22,6 +31,7 @@ describe(`Mobile Navbar`, () => {
       state: INITIAL_VALUE,
       toggle: mockToggleFn,
     });
+    vi.mocked(useSession).mockReturnValue(mockUseSession());
   });
 
   it(`should toggle the isMenuOpen state when hamburger menu is clicked`, () => {
