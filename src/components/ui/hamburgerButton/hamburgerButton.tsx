@@ -1,8 +1,7 @@
 import { FC } from "react";
 import styles from "./hamburgerButton.module.scss";
 import { HamburgerButtonProps } from "./hamburgerButton.types";
-
-export const HAMBURGER_BUTTON_TEST_ID = `hamburgerButton`;
+import { HAMBURGER_BUTTON_TEST_ID } from "./hamburgerButton.constants";
 
 const HamburgerButton: FC<HamburgerButtonProps> = ({ isOpen, onClick }) => {
   return (

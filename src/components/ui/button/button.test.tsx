@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { it } from "vitest";
-import Button, { BUTTON_TEST_ID } from "./button";
+import Button from "./button";
 import { buttonTheme, outline, solid } from "./button.styles";
+import { BUTTON_TEST_ID } from "./button.constants";
 
 describe(`Button`, () => {
   const TEXT = `submit`;

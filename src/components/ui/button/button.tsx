@@ -2,8 +2,7 @@
 import { Button as ChakraButton } from "@chakra-ui/react";
 import { FC, PropsWithChildren } from "react";
 import { ButtonProps } from "./button.types";
-
-export const BUTTON_TEST_ID = `button`;
+import { BUTTON_TEST_ID } from "./button.constants";
 
 const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, ...props }) => {
   return (

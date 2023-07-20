@@ -1,7 +1,8 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import HamburgerButton, { HAMBURGER_BUTTON_TEST_ID } from "./hamburgerButton";
+import HamburgerButton from "./hamburgerButton";
 import { Mock, vi } from "vitest";
+import { HAMBURGER_BUTTON_TEST_ID } from "./hamburgerButton.constants";
 
 describe(`Hamburger Button`, () => {
   let onClickCallback: Mock;
