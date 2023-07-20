@@ -7,10 +7,10 @@ import MobileMenu, {
   MOBILE_MENU_TEST_ID,
 } from "./mobileMenu";
 import { useToggle } from "../../hooks/useToggle/useToggle";
-import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton";
 import { navbarLinks } from "../../utils/navbarLinks";
 
 import "next/navigation";
+import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton.constants";
 
 vi.mock(`next/navigation`, () => ({
   useRouter: vi.fn(),
