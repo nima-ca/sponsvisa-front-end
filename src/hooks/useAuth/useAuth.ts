@@ -3,6 +3,11 @@ import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { UseAuth } from "./useAuth.type";
+import {
+  LOGIN_FAILED_TITLE_MSG,
+  LOGIN_SUCCESS_DESC_MSG,
+  LOGIN_SUCCESS_TITLE_MSG,
+} from "./useAuth.constants";
 
 const useAuth = (): UseAuth => {
   const toast = useToast({ isClosable: true, duration: 9000 });
@@ -18,13 +23,13 @@ const useAuth = (): UseAuth => {
     if (res?.ok) {
       router.push(`/`);
       toast({
-        title: `Successful Login`,
-        description: `You have logged into your account successfully!`,
+        title: LOGIN_SUCCESS_TITLE_MSG,
+        description: LOGIN_SUCCESS_DESC_MSG,
         status: `success`,
       });
     } else {
       toast({
-        title: `Failed Login`,
+        title: LOGIN_FAILED_TITLE_MSG,
         description: res?.error,
         status: `error`,
       });
