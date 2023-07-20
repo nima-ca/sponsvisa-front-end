@@ -22,7 +22,10 @@ const LoginForm: FC = () => {
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
     async onSubmit(values, { resetForm }) {
       setIsLoading(true);
-      await login({ email: values.email, password: values.password });
+      await login({
+        email: values.email.trim(),
+        password: values.password.trim(),
+      });
       setIsLoading(false);
       resetForm();
     },
