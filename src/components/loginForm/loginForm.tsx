@@ -12,6 +12,7 @@ import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
 import { LoginFormikProps } from "./loginForm.types";
 
+// TODO: test this component with cypress
 const LoginForm: FC = () => {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
