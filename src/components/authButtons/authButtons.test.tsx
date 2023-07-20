@@ -4,7 +4,7 @@ import React from "react";
 import { vi } from "vitest";
 import { useToggle } from "../../hooks/useToggle/useToggle";
 import { defineUrl, mockUseSession } from "../../utils/mocks";
-import AuthButtons from "./AuthButtons";
+import AuthButtons from "./authButtons";
 
 vi.mock(`../../hooks/useToggle/useToggle`);
 
