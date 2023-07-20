@@ -11,7 +11,7 @@ const Input: FC<InputProps> = ({ className, ...props }) => {
       variant="outline"
       errorBorderColor="red.600"
       className={`${styles.input} ${className}`}
-      data-testId={INPUT_TEST_ID}
+      data-testid={INPUT_TEST_ID}
       {...props}
     />
   );

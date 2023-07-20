@@ -1,6 +1,6 @@
 import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
 import api from "@src/utils/axios";
-import { User } from "next-auth";
+import { User } from "@src/utils/types";
 
 export interface LoginResponse {
   success: boolean;

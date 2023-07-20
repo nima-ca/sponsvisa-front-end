@@ -10,7 +10,7 @@ const HelperText: FC<PropsWithChildren<HelperTextProps>> = ({
 }) => {
   return (
     <span
-      data-testId={HELPER_TEXT_TEST_ID}
+      data-testid={HELPER_TEXT_TEST_ID}
       className={`${className} ${styles.helper} ${error ? styles.error : ``}`}
     >
       {children}
