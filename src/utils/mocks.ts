@@ -1,16 +1,5 @@
-import { vi } from "vitest";
 import { User, UserRole } from "./types";
-import { SessionContextValue } from "next-auth/react";
 import { Session } from "next-auth";
-
-export const useRouterMock = {
-  forward: vi.fn(),
-  prefetch: vi.fn(),
-  refresh: vi.fn(),
-  replace: vi.fn(),
-  back: vi.fn(),
-  push: vi.fn(),
-};
 
 export const mockUser = (user?: User): User => {
   return (
@@ -40,18 +29,6 @@ export const mockSession = (): Session => {
     refreshToken: `random refresh token `,
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24).toString(), // expires in 24 hour
   };
-};
-
-export const mockUseSession = (
-  session?: SessionContextValue,
-): SessionContextValue => {
-  return (
-    session ?? {
-      data: mockSession(),
-      status: `authenticated`,
-      update: vi.fn(),
-    }
-  );
 };
 
 export const stringGenerator = (length: number, character: string): string =>

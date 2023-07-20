@@ -3,8 +3,9 @@ import { signOut, useSession } from "next-auth/react";
 import React from "react";
 import { vi } from "vitest";
 import { useToggle } from "../../hooks/useToggle/useToggle";
-import { defineUrl, mockUseSession } from "../../utils/mocks";
+import { defineUrl } from "../../utils/mocks";
 import AuthButtons from "./authButtons";
+import { mockUseSession } from "../../utils/vitestMocks";
 
 vi.mock(`../../hooks/useToggle/useToggle`);
 
