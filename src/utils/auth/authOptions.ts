@@ -1,7 +1,8 @@
+import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
+import { LoginResponse, login } from "@src/utils/api/auth/login";
+import { AxiosError } from "axios";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { login } from "@src/utils/api/auth/login";
-import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -26,7 +27,13 @@ export const authOptions: NextAuthOptions = {
 
           return null;
         } catch (error) {
-          return null;
+          const _error = error as AxiosError;
+          const _errorPayload = _error.response?.data as LoginResponse;
+          throw new Error(
+            _errorPayload.error
+              ? _errorPayload.error[0]
+              : `Something Went Wrong!`,
+          );
         }
       },
     }),

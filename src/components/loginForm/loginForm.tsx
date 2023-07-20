@@ -4,35 +4,23 @@ import Button from "@src/components/ui/button/button";
 import Input from "@src/components/ui/input/input";
 import PasswordInput from "@src/components/ui/passwrodInput/passwrodInput";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { FC, FormEvent, useState } from "react";
 import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
 import { LoginFormikProps } from "./loginForm.types";
-const LoginForm: FC = () => {
-  const router = useRouter();
+import useAuth from "@src/hooks/useAuth/useAuth";
 
+const LoginForm: FC = () => {
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik<LoginFormikProps>({
     initialValues: { email: ``, password: `` },
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
     async onSubmit(values, { resetForm }) {
-      setIsLoading(false);
-      const res = await signIn(`credentials`, {
-        redirect: false,
-        email: values.email,
-        password: values.password,
-      });
-
-      if (res?.ok) {
-        router.push(`/`);
-      } else {
-        console.log(res?.error);
-      }
-
+      setIsLoading(true);
+      await login({ email: values.email, password: values.password });
       setIsLoading(false);
       resetForm();
     },

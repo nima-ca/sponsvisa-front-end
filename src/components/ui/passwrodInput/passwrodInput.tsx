@@ -1,6 +1,6 @@
 "use client";
 
-import { InputGroup, InputRightElement } from "@chakra-ui/react";
+import { IconButton, InputGroup, InputRightElement } from "@chakra-ui/react";
 import Input from "@src/components/ui/input/input";
 import { FC } from "react";
 import { InputProps } from "../input/input.types";
@@ -16,13 +16,18 @@ const PasswordInput: FC<Omit<InputProps, `type`>> = (props) => {
     <InputGroup size="md">
       <Input {...props} type={show ? `text` : `password`} pr="3.5rem" />
       <InputRightElement width="3.5rem">
-        <Button onClick={toggleShow} size="sm" variant="link">
-          {show ? (
-            <ClosedEyeIcon className={styles.icon} />
-          ) : (
-            <OpenEyeIcon className={styles.icon} />
-          )}
-        </Button>
+        <IconButton
+          onClick={toggleShow}
+          aria-label="Show Password"
+          variant="link"
+          icon={
+            show ? (
+              <ClosedEyeIcon className={styles.icon} />
+            ) : (
+              <OpenEyeIcon className={styles.icon} />
+            )
+          }
+        />
       </InputRightElement>
     </InputGroup>
   );
