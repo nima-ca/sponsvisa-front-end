@@ -6,7 +6,7 @@ import PasswordInput from "@src/components/ui/passwordInput/passwordInput";
 import useAuth from "@src/hooks/useAuth/useAuth";
 import { useFormik } from "formik";
 import Link from "next/link";
-import { FC, FormEvent, useState } from "react";
+import { FC } from "react";
 import HelperText from "../ui/helperText/helperText";
 import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
@@ -14,34 +14,26 @@ import { LoginFormikProps } from "./loginForm.types";
 
 // TODO: test this component with cypress
 const LoginForm: FC = () => {
-  const { login } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
+  const { login, loginLoadingState } = useAuth();
 
   const formik = useFormik<LoginFormikProps>({
     initialValues: { email: ``, password: `` },
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
     async onSubmit(values, { resetForm }) {
-      setIsLoading(true);
       await login({
         email: values.email.trim(),
         password: values.password.trim(),
       });
-      setIsLoading(false);
       resetForm();
     },
   });
-
-  const loginSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    formik.handleSubmit();
-  };
 
   const emailHasError = !!formik.errors.email && !!formik.touched.email;
   const passwordHasError =
     !!formik.errors.password && !!formik.touched.password;
 
   return (
-    <form className={styles.container} onSubmit={loginSubmitHandler}>
+    <div className={styles.container}>
       <Input
         placeholder="Email"
         {...formik.getFieldProps(`email`)}
@@ -58,8 +50,9 @@ const LoginForm: FC = () => {
       )}
       <Button
         className={styles.submit}
-        isLoading={isLoading}
-        type="submit"
+        isLoading={loginLoadingState}
+        onClick={() => formik.handleSubmit()}
+        type="button"
         variant="solid"
         size="md"
       >
@@ -69,7 +62,7 @@ const LoginForm: FC = () => {
       <Link href="/register" className={styles.link}>
         New to Sponsvisa? Create your account here!
       </Link>
-    </form>
+    </div>
   );
 };
 

@@ -1,43 +1,42 @@
 "use client";
 
 import Button from "@src/components/ui/button/button";
-import { useToggle } from "@src/hooks/useToggle/useToggle";
-import { signOut, useSession } from "next-auth/react";
-import { FC } from "react";
+import useAuth from "@src/hooks/useAuth/useAuth";
+import { useRouter } from "next/navigation";
+import { FC, useContext } from "react";
 import styles from "./authButtons.module.scss";
+import { authContext } from "@src/context/authContext";
 
 const AuthButtons: FC = () => {
-  const { state: isLoading, toggle: toggleLoading } = useToggle(false);
-  const { status } = useSession();
+  const router = useRouter();
+  const auth = useContext(authContext);
+  const { logout, logoutLoadingState } = useAuth();
 
   return (
     <div className={styles[`auth-button`]}>
-      {status === `unauthenticated` || status === `loading` ? (
+      {!auth?.session.isLoggedIn ? (
         <>
           <Button
             variant="solid"
             size="sm"
-            onClick={() => (window.location.href = `/register`)}
+            onClick={() => router.push(`/register`)}
           >
             Register
           </Button>
           <Button
             variant="solid"
             size="sm"
-            onClick={() => (window.location.href = `/login`)}
+            onClick={() => router.push(`/login`)}
           >
             Login
           </Button>
         </>
       ) : (
         <Button
-          isLoading={isLoading}
+          isLoading={logoutLoadingState}
           variant="solid"
           size="sm"
-          onClick={() => {
-            toggleLoading();
-            signOut();
-          }}
+          onClick={logout}
         >
           Logout
         </Button>

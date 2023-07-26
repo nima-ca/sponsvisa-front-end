@@ -1,4 +1,4 @@
-import { User, UserRole } from "./types";
+import { User, UserRole } from "@src/types/user.types";
 import { Session } from "next-auth";
 
 export const mockUser = (user?: User): User => {

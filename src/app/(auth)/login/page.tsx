@@ -1,10 +1,11 @@
+"use client";
+
 import { DESCRIPTION } from "@src/app/layout";
 import LoginForm from "@src/components/loginForm/loginForm";
-import { authOptions } from "@src/utils/auth/authOptions";
+import { authContext } from "@src/context/authContext";
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
@@ -12,10 +13,10 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
 };
 
-const LoginPage: FC = async () => {
-  const session = await getServerSession(authOptions);
+const LoginPage: FC = () => {
+  const auth = useContext(authContext);
 
-  if (session) {
+  if (auth?.session.isLoggedIn) {
     redirect(`/`);
   }
 

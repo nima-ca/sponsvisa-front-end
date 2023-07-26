@@ -1,4 +1,4 @@
-import { ILink } from "@src/utils/types";
+import { ILink } from "@src/types/common.types";
 
 export const navbarLinks: ILink[] = [
   { name: `Home`, href: `/` },
