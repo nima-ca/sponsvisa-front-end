@@ -3,7 +3,6 @@
 import Button from "@src/components/ui/button/button";
 import Input from "@src/components/ui/input/input";
 import PasswordInput from "@src/components/ui/passwordInput/passwordInput";
-import useAuth from "@src/hooks/useAuth/useAuth";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FC } from "react";
@@ -11,16 +10,17 @@ import HelperText from "../ui/helperText/helperText";
 import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
 import { LoginFormikProps } from "./loginForm.types";
+import { useLogin } from "@src/hooks/api/useLogin/useLogin";
 
 // TODO: test this component with cypress
 const LoginForm: FC = () => {
-  const { login, loginLoadingState } = useAuth();
+  const loginMutation = useLogin();
 
   const formik = useFormik<LoginFormikProps>({
     initialValues: { email: ``, password: `` },
     validationSchema: LOGIN_FORM_VALIDATION_SCHEMA,
     async onSubmit(values, { resetForm }) {
-      await login({
+      await loginMutation.mutate({
         email: values.email.trim(),
         password: values.password.trim(),
       });
@@ -50,7 +50,7 @@ const LoginForm: FC = () => {
       )}
       <Button
         className={styles.submit}
-        isLoading={loginLoadingState}
+        isLoading={loginMutation.isLoading}
         onClick={() => formik.handleSubmit()}
         type="button"
         variant="solid"

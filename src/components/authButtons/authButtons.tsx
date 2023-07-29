@@ -1,16 +1,16 @@
 "use client";
 
 import Button from "@src/components/ui/button/button";
-import useAuth from "@src/hooks/useAuth/useAuth";
 import { useRouter } from "next/navigation";
 import { FC, useContext } from "react";
 import styles from "./authButtons.module.scss";
 import { authContext } from "@src/context/authContext";
+import { useLogout } from "@src/hooks/api/useLogout/useLogout";
 
 const AuthButtons: FC = () => {
   const router = useRouter();
   const auth = useContext(authContext);
-  const { logout, logoutLoadingState } = useAuth();
+  const logoutMutation = useLogout();
 
   return (
     <div className={styles[`auth-button`]}>
@@ -33,10 +33,10 @@ const AuthButtons: FC = () => {
         </>
       ) : (
         <Button
-          isLoading={logoutLoadingState}
+          isLoading={logoutMutation.isLoading}
           variant="solid"
           size="sm"
-          onClick={logout}
+          onClick={() => logoutMutation.mutate()}
         >
           Logout
         </Button>

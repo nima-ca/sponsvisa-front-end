@@ -1,5 +1,4 @@
 import { User, UserRole } from "@src/types/user.types";
-import { Session } from "next-auth";
 
 export const mockUser = (user?: User): User => {
   return (
@@ -20,15 +19,6 @@ export const defineUrl = (url: string) => {
     },
     writable: true,
   });
-};
-
-export const mockSession = (): Session => {
-  return {
-    user: mockUser(),
-    accessToken: `random access token`,
-    refreshToken: `random refresh token `,
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24).toString(), // expires in 24 hour
-  };
 };
 
 export const stringGenerator = (length: number, character: string): string =>
