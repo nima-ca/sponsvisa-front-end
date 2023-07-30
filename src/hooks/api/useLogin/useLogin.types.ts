@@ -1,5 +1,5 @@
 import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
-import { LoginResponse } from "@src/utils/api/auth/login";
+import { LoginResponse } from "@src/hooks/api/useLogin/login";
 import { UseMutationResult } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 

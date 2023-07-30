@@ -1,6 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { USER_KEY_IN_COOKIE, authContext } from "@src/context/authContext";
-import { logout } from "@src/utils/api/auth/logout";
+import { logout } from "@src/hooks/api/useLogout/logout";
 import { setInCookies } from "@src/utils/cookie";
 import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";
@@ -12,6 +12,7 @@ import {
 } from "./useLogout.constants";
 import { UseLogout } from "./useLogout.types";
 
+// TODO: add unit tests
 export const useLogout = (): UseLogout => {
   const auth = useContext(authContext);
   const toast = useToast({ isClosable: true, duration: 9000 });

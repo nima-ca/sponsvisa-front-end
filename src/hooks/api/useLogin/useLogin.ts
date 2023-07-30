@@ -1,6 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { USER_KEY_IN_COOKIE, authContext } from "@src/context/authContext";
-import { LoginResponse, login } from "@src/utils/api/auth/login";
+import { LoginResponse, login } from "@src/hooks/api/useLogin/login";
 import { setInCookies } from "@src/utils/cookie";
 import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";
@@ -13,6 +13,7 @@ import { AxiosError } from "axios";
 import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
 import { UseLogin } from "./useLogin.types";
 
+// TODO: add unit tests
 export const useLogin = (): UseLogin => {
   const auth = useContext(authContext);
   const toast = useToast({ isClosable: true, duration: 9000 });

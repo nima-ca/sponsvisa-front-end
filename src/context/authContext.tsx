@@ -14,6 +14,7 @@ import { User } from "@src/types/user.types";
 export const USER_KEY_IN_COOKIE = `user`;
 export const authContext = createContext<AuthContext | null>(null);
 
+// TODO: add unit tests
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [session, setSession] = useState<UserSession>({
     isLoggedIn: false,
