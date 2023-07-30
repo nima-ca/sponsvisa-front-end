@@ -1,12 +1,9 @@
 import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
+import { CoreResponse } from "@src/types/common.types";
+import { User } from "@src/types/user.types";
 import api from "@src/utils/axios";
-import { User } from "@src/utils/types";
 
-export interface LoginResponse {
-  success: boolean;
-  token?: string;
-  refreshToken?: string;
-  error?: string[];
+export interface LoginResponse extends CoreResponse {
   user: User;
 }
 
