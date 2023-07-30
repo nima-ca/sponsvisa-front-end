@@ -36,7 +36,9 @@ const AuthButtons: FC = () => {
           isLoading={logoutMutation.isLoading}
           variant="solid"
           size="sm"
-          onClick={() => logoutMutation.mutate()}
+          onClick={() => {
+            logoutMutation.mutate();
+          }}
         >
           Logout
         </Button>

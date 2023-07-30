@@ -1,6 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { USER_KEY_IN_COOKIE, authContext } from "@src/context/authContext";
-import { logout } from "@src/utils/api/auth/login";
+import { logout } from "@src/utils/api/auth/logout";
 import { setInCookies } from "@src/utils/cookie";
 import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";

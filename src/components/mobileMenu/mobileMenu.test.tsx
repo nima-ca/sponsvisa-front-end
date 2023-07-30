@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, PropsWithChildren } from "react";
 import { Mock, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import MobileMenu, {
@@ -11,8 +11,7 @@ import { navbarLinks } from "../../utils/navbarLinks";
 
 import "next/navigation";
 import { HAMBURGER_BUTTON_TEST_ID } from "../ui/hamburgerButton/hamburgerButton.constants";
-import { useSession } from "next-auth/react";
-import { mockUseSession } from "../../utils/vitestMocks";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 vi.mock(`next/navigation`, () => ({
   useRouter: vi.fn(),
@@ -20,6 +19,12 @@ vi.mock(`next/navigation`, () => ({
 
 vi.mock(`next-auth/react`);
 vi.mock(`../../hooks/useToggle/useToggle`);
+
+const queryClient = new QueryClient();
+
+const QueryClientWrapper: FC<PropsWithChildren> = ({ children }) => (
+  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+);
 
 describe(`Mobile Navbar`, () => {
   let mockToggleFn: Mock;
@@ -31,11 +36,14 @@ describe(`Mobile Navbar`, () => {
       state: INITIAL_VALUE,
       toggle: mockToggleFn,
     });
-    vi.mocked(useSession).mockReturnValue(mockUseSession());
   });
 
   it(`should toggle the isMenuOpen state when hamburger menu is clicked`, () => {
-    render(<MobileMenu />);
+    render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
     const menu = screen.getByTestId(MOBILE_MENU_TEST_ID);
     const button = screen.getByTestId(HAMBURGER_BUTTON_TEST_ID);
 
@@ -48,7 +56,11 @@ describe(`Mobile Navbar`, () => {
   });
 
   it(`should not show the menu when isMenuOpen is false`, () => {
-    render(<MobileMenu />);
+    render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
     const asideMenu = screen.getByTestId(MOBILE_MENU_ASIDE_TEST_ID);
 
     expect(asideMenu.className).toContain(`mobile__menu`);
@@ -62,7 +74,11 @@ describe(`Mobile Navbar`, () => {
       toggle: mockToggleFn,
     });
 
-    render(<MobileMenu />);
+    render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
     const asideMenu = screen.getByTestId(MOBILE_MENU_ASIDE_TEST_ID);
 
     expect(asideMenu.className).toContain(`mobile__menu`);
@@ -71,7 +87,11 @@ describe(`Mobile Navbar`, () => {
   });
 
   it(`should render navbarLinks`, () => {
-    const { container } = render(<MobileMenu />);
+    const { container } = render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
     const links = container.getElementsByClassName(`navigation__link`);
 
     expect(links.length).toBe(navbarLinks.length);
@@ -87,7 +107,11 @@ describe(`Mobile Navbar`, () => {
       toggle: mockToggleFn,
     });
 
-    render(<MobileMenu />);
+    render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
     const backdrop = screen.getByTestId(BACKDROP_TEST_ID);
 
     expect(backdrop).toBeInTheDocument();
@@ -96,7 +120,11 @@ describe(`Mobile Navbar`, () => {
   });
 
   it(`should not render a backdrop when menu is closed`, () => {
-    render(<MobileMenu />);
+    render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
     const backdrop = screen.queryByTestId(BACKDROP_TEST_ID);
 
     expect(backdrop).not.toBeInTheDocument();
@@ -111,7 +139,11 @@ describe(`Mobile Navbar`, () => {
       toggle: mockToggleFn,
     });
 
-    render(<MobileMenu />);
+    render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
 
     // check if the backdrop exists
     const backdrop = screen.getByTestId(BACKDROP_TEST_ID);

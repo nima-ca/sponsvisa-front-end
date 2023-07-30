@@ -13,8 +13,3 @@ export const login = async (
   const response = await api.post<LoginResponse>(`/auth/login`, credentials);
   return response.data;
 };
-
-export const logout = async (): Promise<CoreResponse> => {
-  const response = await api.post<CoreResponse>(`/auth/logout`);
-  return response.data;
-};
