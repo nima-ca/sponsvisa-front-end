@@ -1,2 +1,11 @@
 export const PASSWORD_MIN_LENGTH = 8;
 export const PASSWORD_MAX_LENGTH = 64;
+export const EMAIL_REQUIRED_MSG = `Enter your email address`;
+export const EMAIL_IS_NOT_VALID_MSG = `Enter a valid email address`;
+export const NAME_REQUIRED_MSG = `Enter your name`;
+export const PASSWORD_REQUIRED_MSG = `Enter your password`;
+export const PASSWORD_MIN_LENGTH_MSG = `Password must be at least ${PASSWORD_MIN_LENGTH} characters`;
+export const PASSWORD_MAX_LENGTH_MSG = `Password must be less than ${PASSWORD_MAX_LENGTH} characters`;
+export const PASSWORD_COMPLEXITY_MSG = `Your password must contain at least one Uppercase character or Symbol, and a number`;
+export const CONFIRM_PASSWORD_REQUIRED_MSG = `Enter your confirm password`;
+export const CONFIRM_PASSWORD_MATCH_MSG = `Confirm password does not match the password`;

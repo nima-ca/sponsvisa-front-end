@@ -6,7 +6,7 @@ import PasswordInput from "@src/components/ui/passwordInput/passwordInput";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FC, FormEvent } from "react";
-import HelperText from "../ui/helperText/helperText";
+import HelperText from "@src/components/ui/helperText/helperText";
 import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
 import { LoginFormikProps } from "./loginForm.types";
