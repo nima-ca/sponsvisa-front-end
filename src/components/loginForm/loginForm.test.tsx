@@ -6,12 +6,12 @@ import { stringGenerator } from "../../utils/mocks";
 import {
   EMAIL_IS_NOT_VALID_MSG,
   EMAIL_REQUIRED_MSG,
-  LOGIN_FORM_VALIDATION_SCHEMA,
   PASSWORD_COMPLEXITY_MSG,
   PASSWORD_MAX_LENGTH_MSG,
   PASSWORD_MIN_LENGTH_MSG,
   PASSWORD_REQUIRED_MSG,
-} from "./loginForm.constants";
+} from "../../utils/constants";
+import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 
 describe(`Validation Schema`, () => {
   it(`should pass validation with valid email and password`, async () => {
