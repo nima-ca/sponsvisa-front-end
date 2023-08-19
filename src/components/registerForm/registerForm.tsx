@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Button from "@src/components/ui/button/button";
 import HelperText from "@src/components/ui/helperText/helperText";
 import Input from "@src/components/ui/input/input";
@@ -78,6 +79,10 @@ const RegisterForm: FC = () => {
         >
           Register
         </Button>
+
+        <Link href="/login" className={styles.link}>
+          Do you already have an account? Login here!
+        </Link>
       </form>
     </FormikProvider>
   );
