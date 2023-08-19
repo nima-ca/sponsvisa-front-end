@@ -10,3 +10,5 @@ export interface User {
   role: UserRole;
   isVerified: boolean;
 }
+
+export type UserAccess = UserRole | `ANY`;

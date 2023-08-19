@@ -12,11 +12,13 @@ import {
 import { AxiosError } from "axios";
 import { LoginFormikProps } from "@src/components/loginForm/loginForm.types";
 import { UseLogin } from "./useLogin.types";
+import { useRouter } from "next/navigation";
 
 // TODO: add unit tests
 export const useLogin = (): UseLogin => {
   const auth = useContext(authContext);
   const toast = useToast({ isClosable: true, duration: 9000 });
+  const router = useRouter();
 
   return useMutation<
     LoginResponse,
@@ -26,6 +28,7 @@ export const useLogin = (): UseLogin => {
     onSuccess(data) {
       auth?.setSession({ isLoggedIn: true, user: data.user });
       setInCookies(USER_KEY_IN_COOKIE, data.user, { expires: 7 });
+      router.replace(`/`);
 
       toast({
         title: LOGIN_SUCCESS_TITLE_MSG,
