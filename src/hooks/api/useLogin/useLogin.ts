@@ -37,7 +37,7 @@ export const useLogin = (): UseLogin => {
       });
     },
     onError(error) {
-      const errorMessages = error?.response?.data?.error;
+      const errorMessages = error?.response?.data?.errors;
       toast({
         title: LOGIN_FAILED_TITLE_MSG,
         description: errorMessages

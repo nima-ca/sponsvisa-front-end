@@ -5,5 +5,5 @@ export interface ILink {
 
 export interface CoreResponse {
   success: boolean;
-  error?: string[];
+  errors?: string[];
 }

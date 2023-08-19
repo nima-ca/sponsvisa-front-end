@@ -12,13 +12,16 @@ import {
 } from "./registerForm.constants";
 import styles from "./registerForm.module.scss";
 import { RegisterFormikProps } from "./registerForm.types";
+import { useRegister } from "@src/hooks/api/useRegister/useRegister";
 
 const RegisterForm: FC = () => {
+  const registerMutation = useRegister();
+
   const formik = useFormik<RegisterFormikProps>({
     initialValues: REGISTER_FORMIK_INITIAL_VALUE,
     validationSchema: REGISTER_FORM_VALIDATION_SCHEMA,
-    onSubmit(values, formikHelpers) {
-      // formikHelpers.resetForm();
+    onSubmit(values) {
+      registerMutation.mutate(values);
     },
   });
 
@@ -68,8 +71,7 @@ const RegisterForm: FC = () => {
 
         <Button
           className={styles.submit}
-          isLoading={false}
-          //   isLoading={registerMutation.isLoading}
+          isLoading={registerMutation.isLoading}
           type="submit"
           variant="solid"
           size="md"
