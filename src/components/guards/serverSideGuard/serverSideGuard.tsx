@@ -9,11 +9,7 @@ const ServerSideGuard: FC<PropsWithChildren<ServerSideGuardProps>> = ({
 }) => {
   const user = getUserFromCookie();
 
-  if (!user) {
-    notFound();
-  }
-
-  if (role !== `ANY` && user.role !== role) {
+  if (!user || (role !== `ANY` && user.role !== role)) {
     notFound();
   }
 
