@@ -5,7 +5,7 @@ import Input from "@src/components/ui/input/input";
 import PasswordInput from "@src/components/ui/passwordInput/passwordInput";
 import { useFormik } from "formik";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, FormEvent } from "react";
 import HelperText from "../ui/helperText/helperText";
 import { LOGIN_FORM_VALIDATION_SCHEMA } from "./loginForm.constants";
 import styles from "./loginForm.module.scss";
@@ -28,12 +28,17 @@ const LoginForm: FC = () => {
     },
   });
 
+  const formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    formik.handleSubmit();
+  };
+
   const emailHasError = !!formik.errors.email && !!formik.touched.email;
   const passwordHasError =
     !!formik.errors.password && !!formik.touched.password;
 
   return (
-    <div className={styles.container}>
+    <form className={styles.container} onSubmit={formSubmitHandler}>
       <Input
         placeholder="Email"
         {...formik.getFieldProps(`email`)}
@@ -51,8 +56,7 @@ const LoginForm: FC = () => {
       <Button
         className={styles.submit}
         isLoading={loginMutation.isLoading}
-        onClick={() => formik.handleSubmit()}
-        type="button"
+        type="submit"
         variant="solid"
         size="md"
       >
@@ -62,7 +66,7 @@ const LoginForm: FC = () => {
       <Link href="/register" className={styles.link}>
         New to Sponsvisa? Create your account here!
       </Link>
-    </div>
+    </form>
   );
 };
 
