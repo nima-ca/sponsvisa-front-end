@@ -1,11 +1,11 @@
 "use client";
 
+import { MoonIcon } from "@src/components/icons/moon";
+import { SunIcon } from "@src/components/icons/sun";
+import { colorModes } from "@src/utils/colorMode";
 import { useTheme } from "next-themes";
 import { FC } from "react";
 import styles from "./colorMode.module.scss";
-import { colorModes } from "@src/utils/colorMode";
-import { MoonIcon } from "@src/components/icons/moon";
-import { SunIcon } from "@src/components/icons/sun";
 
 const ColorMode: FC = () => {
   const { theme, setTheme } = useTheme();

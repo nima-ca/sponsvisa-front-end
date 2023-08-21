@@ -36,9 +36,10 @@ const Navbar: FC = () => {
             </li>
           ))}
           |
-          <AuthButtons />
-          |
-          <ColorMode />
+          <AuthButtons />|
+          <div className="color-mode-container">
+            <ColorMode />
+          </div>
         </ul>
         <MobileMenu />
       </div>

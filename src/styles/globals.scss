@@ -55,3 +55,10 @@ ul {
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
 }
+
+.color-mode-container {
+  width: 2rem;
+  height: 2rem;
+
+  @include center;
+}

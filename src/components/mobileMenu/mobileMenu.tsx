@@ -21,8 +21,9 @@ const MobileMenu: FC = () => {
   const { state: isMenuOpen, toggle: toggleMenu } = useToggle(false);
   return (
     <div className={styles.mobile} data-testid={MOBILE_MENU_TEST_ID}>
-      <ColorMode />
-      |
+      <div className="color-mode-container">
+        <ColorMode />
+      </div>
       <HamburgerButton isOpen={isMenuOpen} onClick={toggleMenu} />
       <aside
         data-testid={MOBILE_MENU_ASIDE_TEST_ID}
@@ -36,14 +37,18 @@ const MobileMenu: FC = () => {
               className={styles[`navigation__container`]}
               key={`navbar-key-${index}`}
             >
-              <Link className={styles[`navigation__link`]} href={link.href}>
+              <Link
+                className={styles[`navigation__link`]}
+                href={link.href}
+                onClick={() => toggleMenu()}
+              >
                 {link.name}
               </Link>
             </li>
           ))}
         </ul>
 
-        <AuthButtons />
+        <AuthButtons toggleMenu={toggleMenu} />
       </aside>
       {isMenuOpen && (
         <div
