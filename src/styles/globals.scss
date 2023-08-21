@@ -12,6 +12,7 @@ body {
   font-size: 1rem;
   font-weight: 500;
   position: relative;
+  background-color: var(--color-bg) !important;
 }
 
 html,
@@ -53,4 +54,11 @@ ul {
 * {
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
+}
+
+.color-mode-container {
+  width: 2rem;
+  height: 2rem;
+
+  @include center;
 }

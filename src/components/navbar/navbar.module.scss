@@ -8,6 +8,8 @@
   border-bottom: 0.5px solid
     color-mix(in srgb, var(--color-border) 50%, transparent);
   backdrop-filter: blur(4px);
+  transition-property: background-color;
+  transition-duration: var(--chakra-transition-duration-normal);
 
   @include center;
   z-index: 50;

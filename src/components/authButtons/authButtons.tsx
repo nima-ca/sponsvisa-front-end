@@ -6,8 +6,9 @@ import { FC, useContext } from "react";
 import styles from "./authButtons.module.scss";
 import { authContext } from "@src/context/authContext";
 import { useLogout } from "@src/hooks/api/useLogout/useLogout";
+import { AuthButtonsProps } from "./authButtons.types";
 
-const AuthButtons: FC = () => {
+const AuthButtons: FC<AuthButtonsProps> = ({ toggleMenu }) => {
   const router = useRouter();
   const auth = useContext(authContext);
   const logoutMutation = useLogout();
@@ -19,14 +20,20 @@ const AuthButtons: FC = () => {
           <Button
             variant="solid"
             size="sm"
-            onClick={() => router.push(`/register`)}
+            onClick={() => {
+              router.push(`/register`);
+              toggleMenu && toggleMenu();
+            }}
           >
             Register
           </Button>
           <Button
             variant="solid"
             size="sm"
-            onClick={() => router.push(`/login`)}
+            onClick={() => {
+              router.push(`/login`);
+              toggleMenu && toggleMenu();
+            }}
           >
             Login
           </Button>
@@ -38,6 +45,7 @@ const AuthButtons: FC = () => {
           size="sm"
           onClick={() => {
             logoutMutation.mutate();
+            toggleMenu && toggleMenu();
           }}
         >
           Logout

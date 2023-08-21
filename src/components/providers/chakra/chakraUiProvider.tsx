@@ -14,6 +14,15 @@ export const theme = extendTheme({
     heading: vazirmatn.style.fontFamily,
   },
   components: { Button: buttonTheme },
+  styles: {
+    global: () => ({
+      body: {
+        bg: ``,
+        color: ``,
+        fontFamily: ``,
+      },
+    }),
+  },
 });
 
 const ChakraUIProvider: FC<PropsWithChildren> = ({ children }) => {
