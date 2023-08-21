@@ -6,6 +6,11 @@ import MobileMenu from "@src/components/mobileMenu/mobileMenu";
 import styles from "./navbar.module.scss";
 import { navbarLinks } from "@src/utils/navbarLinks";
 import AuthButtons from "@src/components/authButtons/authButtons";
+import dynamic from "next/dynamic";
+
+const ColorMode = dynamic(() => import(`@src/components/colorMode/colorMode`), {
+  ssr: false,
+});
 
 const Navbar: FC = () => {
   return (
@@ -32,6 +37,8 @@ const Navbar: FC = () => {
           ))}
           |
           <AuthButtons />
+          |
+          <ColorMode />
         </ul>
         <MobileMenu />
       </div>

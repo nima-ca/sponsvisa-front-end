@@ -1,0 +1,23 @@
+.color-icon {
+  color: var(--color-white-black);
+
+  width: 2rem;
+  height: 2rem;
+
+  background-color: var(--color-border);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
