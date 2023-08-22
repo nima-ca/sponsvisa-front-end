@@ -64,7 +64,7 @@ const LoginForm: FC = () => {
       </Button>
 
       <Link href="/register" className={styles.link}>
-        New to Sponsvisa? Create your account here!
+        New to Sponsvisa? <span>Create your account here!</span>
       </Link>
     </form>
   );

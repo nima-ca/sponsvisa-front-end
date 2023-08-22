@@ -81,7 +81,7 @@ const RegisterForm: FC = () => {
         </Button>
 
         <Link href="/login" className={styles.link}>
-          Do you already have an account? Login here!
+          Do you already have an account? <span>Login here!</span>
         </Link>
       </form>
     </FormikProvider>
