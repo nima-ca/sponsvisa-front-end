@@ -7,22 +7,23 @@ import { useTheme } from "next-themes";
 import { FC } from "react";
 import styles from "./colorMode.module.scss";
 
+export const COLOR_MODE_TEST_ID = `COLOR_MODE_TEST_ID`;
+export const SUN_ICON_TEST_ID = `SUN_ICON_TEST_ID`;
+export const MOON_ICON_TEST_ID = `MOON_ICON_TEST_ID`;
+
 const ColorMode: FC = () => {
   const { theme, setTheme } = useTheme();
-
-  const toggleTheme = (selectedTheme: colorModes) => {
-    setTheme(selectedTheme);
-  };
 
   if (theme === colorModes.DARK) {
     return (
       <div
+        data-testid={COLOR_MODE_TEST_ID}
         className={styles[`color-icon`]}
         onClick={() => {
-          toggleTheme(colorModes.LIGHT);
+          setTheme(colorModes.LIGHT);
         }}
       >
-        <MoonIcon />
+        <MoonIcon data-testid={MOON_ICON_TEST_ID} />
       </div>
     );
   }
@@ -30,12 +31,13 @@ const ColorMode: FC = () => {
   if (theme === colorModes.LIGHT) {
     return (
       <div
+        data-testid={COLOR_MODE_TEST_ID}
         className={styles[`color-icon`]}
         onClick={() => {
-          toggleTheme(colorModes.DARK);
+          setTheme(colorModes.DARK);
         }}
       >
-        <SunIcon />
+        <SunIcon data-testid={SUN_ICON_TEST_ID} />
       </div>
     );
   }
@@ -46,12 +48,17 @@ const ColorMode: FC = () => {
 
   return (
     <div
+      data-testid={COLOR_MODE_TEST_ID}
       className={styles[`color-icon`]}
       onClick={() => {
-        toggleTheme(isSystemPreferredDark ? colorModes.LIGHT : colorModes.DARK);
+        setTheme(isSystemPreferredDark ? colorModes.LIGHT : colorModes.DARK);
       }}
     >
-      {isSystemPreferredDark ? <MoonIcon /> : <SunIcon />}
+      {isSystemPreferredDark ? (
+        <MoonIcon data-testid={MOON_ICON_TEST_ID} />
+      ) : (
+        <SunIcon data-testid={SUN_ICON_TEST_ID} />
+      )}
     </div>
   );
 };

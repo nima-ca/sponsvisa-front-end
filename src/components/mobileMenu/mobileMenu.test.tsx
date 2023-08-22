@@ -155,4 +155,19 @@ describe(`Mobile Navbar`, () => {
     expect(mockToggleFn).toHaveBeenCalledTimes(1);
     expect.hasAssertions();
   });
+
+  it(`should toggle the menu when the links are clicked`, () => {
+    const { container } = render(
+      <QueryClientWrapper>
+        <MobileMenu />
+      </QueryClientWrapper>,
+    );
+    const link = container.getElementsByClassName(`navigation__link`).item(0);
+
+    if (link) fireEvent.click(link);
+
+    expect(mockToggleFn).toHaveBeenCalledTimes(1);
+
+    expect.hasAssertions();
+  });
 });
