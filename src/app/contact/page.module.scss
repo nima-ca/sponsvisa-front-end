@@ -1,4 +1,36 @@
 .main {
   @include center;
   min-height: 100vh;
+  flex-direction: column;
+  gap: 2rem;
+
+  .heading {
+    text-align: center;
+    font-size: 1.6rem;
+
+    @include sm {
+      font-size: 2.5rem;
+    }
+  }
+
+  .card {
+    @include center;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include sm {
+      flex-direction: row;
+    }
+  }
+
+  .description {
+    text-align: center;
+
+    padding: 0 1rem;
+
+    @include sm {
+      padding: 0;
+    }
+    max-width: 35rem;
+  }
 }
