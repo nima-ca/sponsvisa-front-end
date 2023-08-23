@@ -1,0 +1,39 @@
+.card {
+  width: 15rem;
+  height: 6rem;
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  @include sm {
+    width: 20rem;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .country {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+    & > img {
+      margin-top: -4px;
+    }
+  }
+}
